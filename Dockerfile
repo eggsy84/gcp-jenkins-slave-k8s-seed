@@ -1,5 +1,5 @@
 FROM jenkinsci/jnlp-slave
-MAINTAINER James Heggs eggsy@eggsylife.co.uk
+MAINTAINER James Heggs jimbobegg@hotmail.com
 
 ENV CLOUDSDK_CORE_DISABLE_PROMPTS 1
 ENV PATH /opt/google-cloud-sdk/bin:$PATH
@@ -9,6 +9,7 @@ USER root
 # Install Google Cloud Components
 RUN curl https://sdk.cloud.google.com | bash && mv google-cloud-sdk /opt
 RUN gcloud components install kubectl
+COPY resources/gauth-service-account.json /opt/key.json
 
 # Install docker
 RUN curl -fsSL https://get.docker.com/ | sh
