@@ -9,7 +9,6 @@ USER root
 # Install Google Cloud Components
 RUN curl https://sdk.cloud.google.com | bash && mv google-cloud-sdk /opt
 RUN gcloud components install kubectl
-COPY resources/gauth-service-account.json /opt/key.json
 
 # Install docker
 RUN curl -fsSL https://get.docker.com/ | sh
